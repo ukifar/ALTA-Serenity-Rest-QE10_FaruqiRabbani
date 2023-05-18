@@ -23,8 +23,8 @@ public class SingleUserStepDef {
         SerenityRest.when().get(ReqresAPI.GET_SINGLE_USER);
     }
     @Then("Should return status code {int} OK")
-    public void shouldReturnStatusCodeOK(int ok) {
-        SerenityRest.then().statusCode(ok);
+    public void shouldReturnStatusCodeOK(int statusCode) {
+        SerenityRest.then().statusCode(statusCode);
     }
 
     //Negative Case 1
@@ -33,8 +33,8 @@ public class SingleUserStepDef {
         SerenityRest.then().body("data.id",equalTo(id));
     }
     @Then("Should return status code {int} Not Found")
-    public void shouldReturnStatusCodeNotFound(int notFound) {
-        SerenityRest.then().statusCode(notFound);
+    public void shouldReturnStatusCodeNotFound(int statusCode) {
+        SerenityRest.then().statusCode(statusCode);
     }
 
     //Negative Case 2

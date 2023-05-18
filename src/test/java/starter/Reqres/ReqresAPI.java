@@ -3,21 +3,21 @@ package starter.Reqres;
 import io.restassured.http.ContentType;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
+import starter.Utils.Constants;
 
 import java.io.File;
 
 public class ReqresAPI {
-    public static String BASE_URL = "https://reqres.in";
-    public static final String DIR = System.getProperty("user.dir");
-    public static String REQ_BODY_DIR = DIR+"/src/test/resources/JSON/ReqBody/";
-    public static String JSON_SCHEMA_DIR = "/src/test/resources/JSON/JSONSchema/";
-    public static String GET_LIST_USERS = BASE_URL+"/api/users?page={page}";
-    public static String POST_CREATE_USER = BASE_URL+"/api/users";
-    public static String PUT_UPDATE_USER = BASE_URL+"/api/users/{id}";
-    public static String DELETE_USER = BASE_URL+"/api/users/{id}";
-    public static String GET_SINGLE_USER = BASE_URL+"/api/users/{id}";
-    public static String GET_INVALID_SINGLE_USER = BASE_URL+"/api/users/{firstName}";
+
+    public static String GET_LIST_USERS = Constants.BASE_URL+"/api/users?page={page}";
+    public static String POST_CREATE_USER = Constants.BASE_URL+"/api/users";
+    public static String PUT_UPDATE_USER = Constants.BASE_URL+"/api/users/{id}";
+    public static String DELETE_USER = Constants.BASE_URL+"/api/users/{id}";
+    public static String GET_SINGLE_USER = Constants.BASE_URL+"/api/users/{id}";
+    public static String GET_INVALID_SINGLE_USER = Constants.BASE_URL+"/api/users/{firstName}";
     //public static String DELETE_INVALID_USER = BASE_URL+"/api/users/{id}";
+    public static String LOGIN_USER = Constants.BASE_URL+"/api/login";
+
 
     @Step("Get lists user with valid parameter page")
     public void getListUsersValidParamPage(int page) {
@@ -55,6 +55,12 @@ public class ReqresAPI {
     public void deleteInvalidUser(String id) {
         SerenityRest.given()
                     .pathParam("id",id);
+    }
+    @Step("Login user")
+    public void loginUser (File json) {
+        SerenityRest.given()
+                    .contentType(ContentType.JSON)
+                    .body(json);
     }
 
 }
