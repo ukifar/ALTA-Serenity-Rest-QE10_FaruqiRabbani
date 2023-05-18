@@ -1,4 +1,4 @@
-Feature: GET Method
+Feature: GET Single User
   @Tugas @Positive-Case
   Scenario Outline: Get single user with valid parameter id should success then return 200 response code
     Given Get single user with id <id>

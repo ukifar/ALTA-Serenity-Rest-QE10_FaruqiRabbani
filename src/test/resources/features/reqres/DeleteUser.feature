@@ -1,4 +1,4 @@
-Feature: DELETE Method
+Feature: DELETE User
   @Tugas @Positive-Case
   Scenario Outline: Delete user with valid parameter should success then return 204 response code
     Given Delete user with valid id <id>

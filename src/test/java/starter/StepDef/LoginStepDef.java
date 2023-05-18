@@ -5,7 +5,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.module.jsv.JsonSchemaValidator;
-import jnr.constants.Constant;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
 import starter.Reqres.ReqresAPI;
@@ -18,7 +17,7 @@ public class LoginStepDef {
     ReqresAPI reqresAPI;
 
     //Positive Case 1
-    @Given("User login with valid username and password")
+    @Given("User login with valid email and password")
     public void userLoginWithValidUsernameAndPassword() {
         File json = new File(Constants.REQ_BODY_DIR+"LoginBody.json");
         reqresAPI.loginUser(json);
@@ -38,14 +37,26 @@ public class LoginStepDef {
     }
 
     //Negative Case 1
-    @Given("User login with valid username and blank password")
+    @Given("User login with valid email and blank password")
     public void userLoginWithValidUsernameAndBlankPassword() {
         File json = new File(Constants.REQ_BODY_DIR+"LoginBlankPassword.json");
         reqresAPI.loginUser(json);
     }
-    @And("Validate json schema failed login user")
+    @And("Validate json schema failed login user with registered email and blank password")
     public void validateJsonSchemaFailedLoginUser() {
         File json = new File(Constants.JSON_SCHEMA_DIR+"LoginFailedJSONSchema.json");
+        SerenityRest.and().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
+    }
+
+    //Negative Case 2
+    @Given("User login with unregistered email and password")
+    public void userLoginWithUnregisteredEmailAndPassword() {
+        File json = new File(Constants.REQ_BODY_DIR+"LoginUnregisteredEmail&Password.json");
+        reqresAPI.loginUser(json);
+    }
+    @And("Validate json schema failed login user with unregistered email and password")
+    public void validateJsonSchemaFailedLoginUserWithUnregisteredEmailAndPassword() {
+        File json = new File(Constants.JSON_SCHEMA_DIR+"LoginFailedUnregisteredJSONSchema.json");
         SerenityRest.and().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
     }
 
