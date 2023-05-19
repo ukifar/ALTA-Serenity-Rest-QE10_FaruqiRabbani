@@ -19,9 +19,15 @@ public class ReqresAPI {
     public static String REGISTER_USER = Constants.BASE_URL+"/api/register";
 
 
-    @Step("Get lists user with valid parameter page")
+    @Step("Get list users with valid parameter page")
     public void getListUsersValidParamPage(int page) {
-        SerenityRest.given().pathParam("page",page);
+        SerenityRest.given()
+                    .pathParam(ReqresResponses.PAGE,page);
+    }
+    @Step("Get list users with invalid parameter page")
+    public void getListUsersInvalidParamPage(String page) {
+        SerenityRest.given()
+                    .pathParam(ReqresResponses.PAGE,page);
     }
     @Step("Post create new user")
     public void postCreateUser(File json) {
@@ -32,29 +38,29 @@ public class ReqresAPI {
     @Step("Put update user")
     public void putUpdateUser(int id, File json) {
         SerenityRest.given()
-                    .pathParam("id",id)
+                    .pathParam(ReqresResponses.ID,id)
                     .contentType(ContentType.JSON)
                     .body(json);
     }
     @Step("Delete user")
     public void deleteUser(int id) {
         SerenityRest.given()
-                    .pathParam("id",id);
+                    .pathParam(ReqresResponses.ID,id);
     }
     @Step("Get single user")
     public void getSingleUser(int id) {
         SerenityRest.given()
-                    .pathParam("id",id);
+                    .pathParam(ReqresResponses.ID,id);
     }
     @Step("Get invalid single user")
     public void getInvalidSingleUser(String firstName) {
         SerenityRest.given()
-                    .pathParam("firstName",firstName);
+                    .pathParam(ReqresResponses.FIRST_NAME,firstName);
     }
     @Step("Delete invalid user")
     public void deleteInvalidUser(String id) {
         SerenityRest.given()
-                    .pathParam("id",id);
+                    .pathParam(ReqresResponses.ID,id);
     }
     @Step("Login user")
     public void loginUser (File json) {

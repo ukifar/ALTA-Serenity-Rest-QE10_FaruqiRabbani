@@ -24,7 +24,7 @@ public class RegisterStepDef {
         File json = new File(Constants.REQ_BODY_DIR+"RegisterUserValid.json");
         reqresAPI.registerUser(json);
     }
-    @When("Send request register user")
+    @When("Send request post register user")
     public void sendRequestRegisterUser() {
         SerenityRest.when().post(ReqresAPI.REGISTER_USER);
     }

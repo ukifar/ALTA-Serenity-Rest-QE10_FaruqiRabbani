@@ -25,7 +25,7 @@ public class LoginStepDef {
         File json = new File(Constants.REQ_BODY_DIR+"LoginBody.json");
         reqresAPI.loginUser(json);
     }
-    @When("Send request login user")
+    @When("Send request post login user")
     public void sendRequestLoginUser() {
         SerenityRest.when().post(ReqresAPI.LOGIN_USER);
     }
