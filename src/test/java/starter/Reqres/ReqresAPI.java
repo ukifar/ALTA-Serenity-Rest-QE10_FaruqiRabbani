@@ -15,8 +15,8 @@ public class ReqresAPI {
     public static String DELETE_USER = Constants.BASE_URL+"/api/users/{id}";
     public static String GET_SINGLE_USER = Constants.BASE_URL+"/api/users/{id}";
     public static String GET_INVALID_SINGLE_USER = Constants.BASE_URL+"/api/users/{firstName}";
-    //public static String DELETE_INVALID_USER = BASE_URL+"/api/users/{id}";
     public static String LOGIN_USER = Constants.BASE_URL+"/api/login";
+    public static String REGISTER_USER = Constants.BASE_URL+"/api/register";
 
 
     @Step("Get lists user with valid parameter page")
@@ -58,6 +58,12 @@ public class ReqresAPI {
     }
     @Step("Login user")
     public void loginUser (File json) {
+        SerenityRest.given()
+                    .contentType(ContentType.JSON)
+                    .body(json);
+    }
+    @Step("Register user")
+    public void registerUser (File json) {
         SerenityRest.given()
                     .contentType(ContentType.JSON)
                     .body(json);
