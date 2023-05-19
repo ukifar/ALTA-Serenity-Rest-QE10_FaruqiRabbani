@@ -4,9 +4,14 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
 import starter.Reqres.ReqresAPI;
+import starter.Reqres.ReqresResponses;
+import starter.Utils.Constants;
+
+import java.io.File;
 
 import static org.hamcrest.Matchers.equalTo;
 
@@ -26,12 +31,17 @@ public class SingleUserStepDef {
     public void shouldReturnStatusCodeOK(int statusCode) {
         SerenityRest.then().statusCode(statusCode);
     }
-
-    //Negative Case 1
     @And("Response body id should be {int}")
     public void responseBodyIdShouldBe(int id) {
-        SerenityRest.then().body("data.id",equalTo(id));
+        SerenityRest.then().body(ReqresResponses.DATA_ID,equalTo(id));
     }
+    @And("Validate json scheme list user with valid parameter id")
+    public void validateJsonSchemeListUserWithValidParameterId() {
+        File json = new File(Constants.JSON_SCHEMA_DIR+"SingleUserJSONSchema.json");
+        SerenityRest.and().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
+    }
+
+    //Negative Case 1
     @Then("Should return status code {int} Not Found")
     public void shouldReturnStatusCodeNotFound(int statusCode) {
         SerenityRest.then().statusCode(statusCode);
@@ -46,5 +56,6 @@ public class SingleUserStepDef {
     public void sendRequestsGetSingleUser() {
         SerenityRest.when().get(ReqresAPI.GET_INVALID_SINGLE_USER);
     }
+
 
 }
