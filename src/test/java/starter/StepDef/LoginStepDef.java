@@ -8,9 +8,12 @@ import io.restassured.module.jsv.JsonSchemaValidator;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
 import starter.Reqres.ReqresAPI;
+import starter.Reqres.ReqresResponses;
 import starter.Utils.Constants;
 
 import java.io.File;
+
+import static org.hamcrest.Matchers.equalTo;
 
 public class LoginStepDef {
     @Steps
@@ -30,6 +33,10 @@ public class LoginStepDef {
     public void shouldReturnStatusCode(int responseCode) {
         SerenityRest.then().statusCode(responseCode);
     }
+    @And("Response body token should be {string}")
+    public void responseBodyTokenShouldBe(String token) {
+        SerenityRest.then().body(ReqresResponses.TOKEN,equalTo(token));
+    }
     @And("Validate json schema success login user")
     public void validateJsonSchemaSuccessLoginUser() {
         File json = new File(Constants.JSON_SCHEMA_DIR+"LoginUserJSONSchema.json");
@@ -41,6 +48,10 @@ public class LoginStepDef {
     public void userLoginWithValidUsernameAndBlankPassword() {
         File json = new File(Constants.REQ_BODY_DIR+"LoginBlankPassword.json");
         reqresAPI.loginUser(json);
+    }
+    @And("Response error body should be {string}")
+    public void responseErrorBodyShouldBe(String error) {
+        SerenityRest.then().body(ReqresResponses.ERROR,equalTo(error));
     }
     @And("Validate json schema failed login user with registered email and blank password")
     public void validateJsonSchemaFailedLoginUser() {

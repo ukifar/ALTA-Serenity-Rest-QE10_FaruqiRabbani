@@ -42,6 +42,10 @@ public class SingleUserStepDef {
     }
 
     //Negative Case 1
+    @Given("Get single user with exceed id {}")
+    public void getSingleUserWithExceedId(int id) {
+        reqresAPI.getSingleUser(id);
+    }
     @Then("Should return status code {int} Not Found")
     public void shouldReturnStatusCodeNotFound(int statusCode) {
         SerenityRest.then().statusCode(statusCode);
@@ -56,6 +60,7 @@ public class SingleUserStepDef {
     public void sendRequestsGetSingleUser() {
         SerenityRest.when().get(ReqresAPI.GET_INVALID_SINGLE_USER);
     }
+
 
 
 }

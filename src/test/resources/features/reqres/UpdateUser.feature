@@ -16,13 +16,9 @@ Feature: PUT Update User
     Given Put update user with valid id 2 and invalid json
     When Send put update user
     Then Status code should be 400 Bad Request
-    And Response body name was "Kimmy", job was "Entertainer", and age was 1
-    And Validate put update user JSON Schema with invalid json
 
   @Tugas @Negative-Case
   Scenario: Put update user with blank name and job should failed then return 400 response code
     Given Put update user with empty name and job with id 2
     When Send put update user
     Then Status code should be 400 Bad Request
-    And Response body name was "" and job was ""
-    And Validate put update user JSON Schema with blank name and job

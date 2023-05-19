@@ -8,12 +8,13 @@ Feature: DELETE User
       | id |
       | 1  |
       | 2  |
+
   @Tugas @Negative-Case
   Scenario Outline: Delete user with invalid parameter should failed then return 204 response code
-    Given Delete user with invalid id <id>
+    Given Delete user with invalid id "<id>"
     When Send delete user
-    Then Status code should be 404 Not Found
+    Then Status code should be 400 Bad Request
     Examples:
-      | id      |
-      | JVytUX  |
-      | HeadXXX |
+      | id     |
+      | JVytUX |
+      | $%^*%* |

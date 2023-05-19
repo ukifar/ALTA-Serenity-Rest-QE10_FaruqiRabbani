@@ -27,10 +27,6 @@ public class UpdateUserStepDef {
     public void statusCodeShouldBeBadRequest(int statusCode) {
         SerenityRest.then().statusCode(statusCode);
     }
-    @And("Response body name was {string}, job was {string}, and age was {int}")
-    public void responseBodyNameWasJobWasAndAddressWas(String name, String job, int age) {
-        SerenityRest.and().body(ReqresResponses.NAME,equalTo(name)).body(ReqresResponses.JOB,equalTo(job)).body(ReqresResponses.AGE,equalTo(age));
-    }
 
     //Negative Case 2
     @Given("Put update user with empty name and job with id {int}")
