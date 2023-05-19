@@ -15,5 +15,8 @@ public class DeleteStepDef {
     public void deleteUserWithInvalidId(String id) {
         reqresAPI.deleteInvalidUser(id);
     }
-
+    @Then("Status code should be {int} Not Found")
+    public void statusCodeShouldBeNotFound(int responseCode) {
+        SerenityRest.then().statusCode(responseCode);
+    }
 }

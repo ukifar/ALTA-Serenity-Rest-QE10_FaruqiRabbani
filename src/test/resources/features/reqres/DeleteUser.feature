@@ -12,7 +12,7 @@ Feature: DELETE User
   Scenario Outline: Delete user with invalid parameter should failed then return 204 response code
     Given Delete user with invalid id <id>
     When Send delete user
-    Then Status code should be 204 No Content
+    Then Status code should be 404 Not Found
     Examples:
       | id      |
       | JVytUX  |
