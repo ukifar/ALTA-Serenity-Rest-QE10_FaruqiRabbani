@@ -12,6 +12,7 @@ public class ReqresAPI {
     public static String GET_LIST_USERS = Constants.BASE_URL+"/api/users?page={page}";
     public static String POST_CREATE_USER = Constants.BASE_URL+"/api/users";
     public static String PUT_UPDATE_USER = Constants.BASE_URL+"/api/users/{id}";
+    public static String PATCH_UPDATE_USER = Constants.BASE_URL+"/api/users/{id}";
     public static String DELETE_USER = Constants.BASE_URL+"/api/users/{id}";
     public static String GET_SINGLE_USER = Constants.BASE_URL+"/api/users/{id}";
     public static String GET_INVALID_SINGLE_USER = Constants.BASE_URL+"/api/users/{firstName}";
@@ -41,6 +42,13 @@ public class ReqresAPI {
                     .pathParam(ReqresResponses.ID,id)
                     .contentType(ContentType.JSON)
                     .body(json);
+    }
+    @Step("Patch update user")
+    public void patchUpdateUser(int id, File json) {
+        SerenityRest.given()
+                .pathParam(ReqresResponses.ID,id)
+                .contentType(ContentType.JSON)
+                .body(json);
     }
     @Step("Delete user")
     public void deleteUser(int id) {
