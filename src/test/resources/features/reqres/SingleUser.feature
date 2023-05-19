@@ -10,6 +10,7 @@ Feature: GET Single User
       | id |
       | 1  |
       | 2  |
+
   @Tugas @Negative-Case
   Scenario Outline: Get single user with invalid parameter id should failed then return 404 response code
     Given Get single user with id <id>
@@ -19,6 +20,7 @@ Feature: GET Single User
       | id  |
       | 789 |
       | 999 |
+
   @Tugas @Negative-Case
   Scenario Outline: Get single user with modified parameter should failed then return 404 response code
     Given Get single user with first name "<firstName>"

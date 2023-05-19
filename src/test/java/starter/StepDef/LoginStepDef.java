@@ -56,7 +56,7 @@ public class LoginStepDef {
     }
     @And("Validate json schema failed login user with unregistered email and password")
     public void validateJsonSchemaFailedLoginUserWithUnregisteredEmailAndPassword() {
-        File json = new File(Constants.JSON_SCHEMA_DIR+"LoginFailedUnregisteredJSONSchema.json");
+        File json = new File(Constants.JSON_SCHEMA_DIR+"LoginFailedJSONSchema.json");
         SerenityRest.and().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
     }
 

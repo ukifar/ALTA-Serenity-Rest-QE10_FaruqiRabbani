@@ -10,6 +10,7 @@ Feature: PUT Update User
       | id |
       | 1  |
       | 2  |
+
   @Tugas @Negative-Case
   Scenario: Put update user with invalid json should failed then return 400 response code
     Given Put update user with valid id 2 and invalid json
@@ -17,6 +18,7 @@ Feature: PUT Update User
     Then Status code should be 400 Bad Request
     And Response body name was "Kimmy", job was "Entertainer", and age was 1
     And Validate put update user JSON Schema with invalid json
+
   @Tugas @Negative-Case
   Scenario: Put update user with blank name and job should failed then return 400 response code
     Given Put update user with empty name and job with id 2
