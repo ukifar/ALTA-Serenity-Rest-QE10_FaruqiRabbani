@@ -5,7 +5,7 @@ Feature: GET Single User
     When Send request get single user
     Then Should return status code 200 OK
     And Response body id should be <id>
-    And Validate json scheme list user with valid parameter id
+    And Validate json scheme single user with valid parameter id
     Examples:
       | id |
       | 1  |

@@ -35,7 +35,7 @@ public class SingleUserStepDef {
     public void responseBodyIdShouldBe(int id) {
         SerenityRest.then().body(ReqresResponses.DATA_ID,equalTo(id));
     }
-    @And("Validate json scheme list user with valid parameter id")
+    @And("Validate json scheme single user with valid parameter id")
     public void validateJsonSchemeListUserWithValidParameterId() {
         File json = new File(Constants.JSON_SCHEMA_DIR+"SingleUserJSONSchema.json");
         SerenityRest.and().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
