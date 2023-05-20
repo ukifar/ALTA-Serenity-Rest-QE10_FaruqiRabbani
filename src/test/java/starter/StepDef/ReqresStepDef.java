@@ -95,6 +95,4 @@ public class ReqresStepDef {
     public void statusCodeShouldBeNoContent(int statusCode) {
         SerenityRest.then().statusCode(statusCode);
     }
-
-
 }

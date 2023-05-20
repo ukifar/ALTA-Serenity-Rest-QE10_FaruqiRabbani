@@ -70,5 +70,4 @@ public class LoginStepDef {
         File json = new File(Constants.JSON_SCHEMA_DIR+"LoginFailedJSONSchema.json");
         SerenityRest.and().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
     }
-
 }

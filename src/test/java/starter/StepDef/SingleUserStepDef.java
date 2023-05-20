@@ -60,7 +60,4 @@ public class SingleUserStepDef {
     public void sendRequestsGetSingleUser() {
         SerenityRest.when().get(ReqresAPI.GET_INVALID_SINGLE_USER);
     }
-
-
-
 }

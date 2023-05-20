@@ -53,5 +53,4 @@ public class RegisterStepDef {
     public void responseBodyErrorShouldBe(String error) {
         SerenityRest.then().body(ReqresResponses.ERROR,equalTo(error));
     }
-
 }

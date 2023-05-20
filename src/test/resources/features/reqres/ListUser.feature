@@ -12,7 +12,7 @@ Feature: GET List User
       | 2    |
 
   @Tugas @Negative-Case
-  Scenario Outline: Get list users with invalid parameter should failed then return 400 response code
+  Scenario Outline: Get list users with invalid parameter should failed then return 404 response code
     Given Get list users with page "<page>"
     When Send get lists users
     Then Should return status code 404 Not Found

@@ -10,7 +10,7 @@ Feature: DELETE User
       | 2  |
 
   @Tugas @Negative-Case
-  Scenario Outline: Delete user with invalid parameter should failed then return 204 response code
+  Scenario Outline: Delete user with invalid parameter should failed then return 400 response code
     Given Delete user with invalid id "<id>"
     When Send delete user
     Then Status code should be 400 Bad Request

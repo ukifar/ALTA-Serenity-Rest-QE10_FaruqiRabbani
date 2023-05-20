@@ -1,17 +1,13 @@
 package starter.StepDef;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
 import starter.Reqres.ReqresAPI;
-import starter.Reqres.ReqresResponses;
 import starter.Utils.Constants;
 
 import java.io.File;
-
-import static org.hamcrest.Matchers.equalTo;
 
 public class UpdateUserStepDef {
     @Steps
@@ -34,5 +30,4 @@ public class UpdateUserStepDef {
         File json = new File(Constants.REQ_BODY_DIR+"/UpdateInvalid2.json");
         reqresAPI.putUpdateUser(id,json);
     }
-
 }
